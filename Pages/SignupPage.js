@@ -3,17 +3,6 @@ import { Image, View, StyleSheet, Keyboard, Dimensions, Text } from 'react-nativ
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 import * as firebase from 'firebase';
 
-var config = {
-    apiKey: "AIzaSyBaWYZ94G8h071WIUiTz4C-2EVok8iZX-s",
-    authDomain: "pickup-4de9f.firebaseapp.com",
-    databaseURL: "https://pickup-4de9f.firebaseio.com",
-    projectId: "pickup-4de9f",
-    storageBucket: "pickup-4de9f.appspot.com",
-    messagingSenderId: "184041685269"
-};
-
-firebase.initializeApp(config);
-
 export default class SignupPage extends Component {
   constructor(props) {
     super(props);
@@ -46,23 +35,29 @@ export default class SignupPage extends Component {
           <Image style={styles.image} source={require('../assets/logo-circle.png')} />
         </View>
 
-        <FormInput text={this.state.email} 
+        <FormInput 
+        text={this.state.email} 
         onChangeText={(email) => this.setState({email})} 
         style={{marginTop: 30}} 
         keyboardType='email-address'
         autoCapitalize="none"
+        spellCheck={false}
         placeholder="E-mail Address" />
 
-        <FormInput text={this.state.email} 
+        <FormInput 
+        text={this.state.password} 
         onChangeText={(password) => this.setState({password})} 
         style={{marginTop: 30}} 
+        spellCheck={false}
         autoCapitalize="none"
         secureTextEntry
         placeholder="Password" />
 
-        <FormInput text={this.state.email} 
+        <FormInput 
+        text={this.state.passwordConfirm} 
         onChangeText={(passwordConfirm) => this.setState({passwordConfirm})} 
         style={{marginTop: 30}} 
+        spellCheck={false}
         autoCapitalize="none"
         secureTextEntry
         placeholder="Confirm Password" />
