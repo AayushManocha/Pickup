@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image, View, StyleSheet, Keyboard, Dimensions, Text } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 import * as firebase from 'firebase';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 export default class SignupPage extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ export default class SignupPage extends Component {
     if(this.state.password === this.state.passwordConfirm) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+        this.props.navigation.navigate("LoginPage");
       } catch (error) {
         this.setState({errorMessage: error.toString()});
       }
@@ -74,6 +76,8 @@ export default class SignupPage extends Component {
         onPress={this.signup}
         style={{ marginTop: 30}} 
         title="Create Account" />
+
+        <KeyboardSpacer />
       </View>
     );
   }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Image, View, StyleSheet, Keyboard, Dimensions, Text } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 import * as firebase from 'firebase';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class LoginPage extends Component {
     try {
         await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
         console.log("Logged In!");
+        this.props.navigation.navigate("HomePage");
         // Navigate to the Home page
     } catch (error) {
         this.setState({errorMessage: error.toString()});
@@ -34,9 +36,9 @@ export default class LoginPage extends Component {
     const { navigate } = this.props.navigation;
     return(
       <View style={styles.container}>
-         <View style={{alignItems: 'center' , marginTop: 30}}> 
-          <Image style={styles.image} source={require('../assets/logo-circle.png')} />
-      </View> 
+        <View style={{alignItems: 'center' , marginTop: 30}}> 
+            <Image style={styles.image} source={require('../assets/logo-circle.png')} />
+        </View> 
 
         <FormInput text={this.state.email} 
         onChangeText={(email) => this.setState({email})} 
@@ -65,6 +67,8 @@ export default class LoginPage extends Component {
         onPress={() => navigate("SignupPage")}
         style={{ marginTop: 30}} 
         title="Create Account" />
+
+        <KeyboardSpacer />
       </View>
     );
   }
