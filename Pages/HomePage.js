@@ -6,10 +6,8 @@ import { MapView } from 'expo';
 
 export default class HomePage extends Component {
   static navigationOptions = {
-    title: "Pickup",
-    headerLeft: null,
+    header: null
   }
-
   render() {
     return (
       <View style={styles.pageContainer}>

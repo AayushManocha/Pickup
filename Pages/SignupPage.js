@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, View, StyleSheet, Keyboard, Dimensions, Text } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements'
+import ModalHeader from '../Components/Headers/ModalHeader'
 import * as firebase from 'firebase';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 
@@ -31,53 +32,50 @@ export default class SignupPage extends Component {
   }
 
   static navigationOptions = {
-    title: "Create Account",
-    mode: 'modal',
+    //header: <ModalHeader title="Create Account" />
+    header: null
   }
 
   render() {
-    const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-          <View style={{alignItems: 'center', marginTop: 30}}> 
-            <Image style={styles.image} source={require('../assets/logo-circle.png')} />
-          </View> 
+      <View>
+        <ModalHeader navigation={this.props.navigation} title="Create Account" />
+        <View style={styles.container}>
+          <FormInput 
+          text={this.state.email} 
+          onChangeText={(email) => this.setState({email})} 
+          style={{marginTop: 30}} 
+          keyboardType='email-address'
+          autoCapitalize="none"
+          spellCheck={false}
+          placeholder="E-mail Address" />
 
-        <FormInput 
-        text={this.state.email} 
-        onChangeText={(email) => this.setState({email})} 
-        style={{marginTop: 30}} 
-        keyboardType='email-address'
-        autoCapitalize="none"
-        spellCheck={false}
-        placeholder="E-mail Address" />
+          <FormInput 
+          text={this.state.password} 
+          onChangeText={(password) => this.setState({password})} 
+          style={{marginTop: 30}} 
+          spellCheck={false}
+          autoCapitalize="none"
+          secureTextEntry
+          placeholder="Password" />
 
-        <FormInput 
-        text={this.state.password} 
-        onChangeText={(password) => this.setState({password})} 
-        style={{marginTop: 30}} 
-        spellCheck={false}
-        autoCapitalize="none"
-        secureTextEntry
-        placeholder="Password" />
+          <FormInput 
+          text={this.state.passwordConfirm} 
+          onChangeText={(passwordConfirm) => this.setState({passwordConfirm})} 
+          style={{marginTop: 30}} 
+          spellCheck={false}
+          autoCapitalize="none"
+          secureTextEntry
+          placeholder="Confirm Password" />
 
-        <FormInput 
-        text={this.state.passwordConfirm} 
-        onChangeText={(passwordConfirm) => this.setState({passwordConfirm})} 
-        style={{marginTop: 30}} 
-        spellCheck={false}
-        autoCapitalize="none"
-        secureTextEntry
-        placeholder="Confirm Password" />
+          <Text>{this.state.errorMessage}</Text>
 
-        <Text>{this.state.errorMessage}</Text>
-
-        <Button 
-        onPress={this.signup}
-        style={{ marginTop: 30}} 
-        title="Create Account" />
-
-        <KeyboardSpacer />
+          <Button 
+          onPress={this.signup}
+          style={{ marginTop: 30}} 
+          title="Create Account" />
+          {/* <KeyboardSpacer /> */}
+        </View>
       </View>
     );
   }
@@ -85,10 +83,10 @@ export default class SignupPage extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    aspectRatio: 1,
-    marginTop: 30
+    // flex: 1,
+    // justifyContent: 'center',
+    // aspectRatio: 1,
+    marginTop: 60
   }, 
   image: {
     // flexDirection: 'column',

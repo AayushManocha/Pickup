@@ -4,7 +4,9 @@ import LoginPage from '../Pages/LoginPage';
 import HomePage from '../Pages/HomePage';
 
 const FindRideStack = StackNavigator({
-  HomePage: {screen: HomePage}
+  HomePage: {screen: HomePage},
+}, {
+  // headerMode: 'none'
 })
 
 export const Root = StackNavigator({
@@ -13,7 +15,7 @@ export const Root = StackNavigator({
   HomePage:  {screen: FindRideStack},
 }, {
   mode: 'modal',
-  headerMode: 'none'
+  // headerMode: 'none'
 });
 
 
