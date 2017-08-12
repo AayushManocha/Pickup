@@ -28,12 +28,18 @@ export default class SignupPage extends Component {
     }
   }
 
+  static navigationOptions = {
+    title: "Create Account",
+    mode: 'modal',
+  }
+
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View style={{alignItems: 'center', flex: 1, marginTop: 30}}>
-          <Image style={styles.image} source={require('../assets/logo-circle.png')} />
-        </View>
+          <View style={{alignItems: 'center', marginTop: 30}}> 
+            <Image style={styles.image} source={require('../assets/logo-circle.png')} />
+          </View> 
 
         <FormInput 
         text={this.state.email} 
@@ -77,13 +83,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    aspectRatio: 1
+    aspectRatio: 1,
+    marginTop: 30
   }, 
   image: {
-    flex: 1,
-    flexDirection: 'column',
-    width: 150,
-    height: 150,
+    // flexDirection: 'column',
+    flex: 0,
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
   }
 })

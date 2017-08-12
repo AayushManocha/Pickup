@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { configureFirebase } from './config/FirebaseSetup';
 
-import SignupPage from './Pages/SignupPage';
-import LoginPage from './Pages/LoginPage';
+import { configureFirebase } from './config/FirebaseSetup';
+import { Root } from './config/Router';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,7 +13,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <LoginPage />
+        <Root />
       </View>
     );
   }
