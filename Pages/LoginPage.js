@@ -70,7 +70,7 @@ export default class LoginPage extends Component {
           title="Login" />
 
           <Button
-          onPress={() => navigate("SignupPage")}
+          onPress={() => this.props.navigation.navigate("SignupPage")}
           style={{ marginTop: 30}} 
           title="Create Account" />
 
