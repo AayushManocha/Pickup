@@ -15,6 +15,7 @@ export default class BasicHeader extends Component {
     render() {
         return(
             <Header
+            onPress={this.closeModal}
             statusBarProps={{ backgroundColor: "black", barStyle: 'light-content' }}
             centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize: 18 }}}
             rightComponent={

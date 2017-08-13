@@ -69,10 +69,11 @@ export default class SignupPage extends Component {
           <Text>{this.state.errorMessage}</Text>
 
           <Button 
+          backgroundColor="#000"
           onPress={this.signup}
           style={{ marginTop: 30}} 
           title="Create Account" />
-          {/* <KeyboardSpacer /> */}
+          <KeyboardSpacer />
         </View>
       </View>
     );
