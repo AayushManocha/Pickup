@@ -19,7 +19,6 @@ export default class LoginPage extends Component {
     this.checkAuthStatus();
   }
 
-
   async login() {
     try {
       await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
@@ -30,8 +29,6 @@ export default class LoginPage extends Component {
     }
   }
 
-
-
   checkAuthStatus() {
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
@@ -40,7 +37,6 @@ export default class LoginPage extends Component {
     });
   }
   
-
   static navigationOptions = {
     header: null
   }
@@ -78,7 +74,6 @@ export default class LoginPage extends Component {
           style={{ marginTop: 30}} 
           title="Create Account" />
 
-          {/* <KeyboardSpacer /> */}
         </View>
       </View>
     );

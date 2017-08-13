@@ -32,7 +32,6 @@ export default class SignupPage extends Component {
   }
 
   static navigationOptions = {
-    //header: <ModalHeader title="Create Account" />
     header: null
   }
 
@@ -83,13 +82,9 @@ export default class SignupPage extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // aspectRatio: 1,
     marginTop: 60
   }, 
   image: {
-    // flexDirection: 'column',
     flex: 0,
     width: 100,
     height: 100,
