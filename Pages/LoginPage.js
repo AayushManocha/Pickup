@@ -13,26 +13,39 @@ export default class LoginPage extends Component {
       password: "",
       errorMessage: ""
     }
+
     this.login = this.login.bind(this);
+    this.checkAuthStatus = this.checkAuthStatus.bind(this);
+    this.checkAuthStatus();
   }
 
 
   async login() {
     try {
-        await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
-        console.log("Logged In!");
-        this.props.navigation.navigate("HomePage");
+      await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
+      console.log("Logged In!");
+      this.props.navigation.navigate("HomePage");
     } catch (error) {
-        this.setState({errorMessage: error.toString()});
+      this.setState({errorMessage: error.toString()});
     }
   }
+
+
+
+  checkAuthStatus() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        this.props.navigation.navigate("HomePage");
+      }
+    });
+  }
+  
 
   static navigationOptions = {
     header: null
   }
 
   render() {
-    const { navigate } = this.props.navigation;
     return(
       <View>
         <BasicHeader title="Login" />
