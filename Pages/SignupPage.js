@@ -22,7 +22,6 @@ export default class SignupPage extends Component {
     if(this.state.password === this.state.passwordConfirm) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
-        this.props.navigation.navigate("LoginPage");
       } catch (error) {
         this.setState({errorMessage: error.toString()});
       }
