@@ -12,7 +12,13 @@ export default class HomePage extends Component {
     return (
       <View style={styles.pageContainer}>
         <BackgroundMap />
-        <Button backgroundColor='#2c3e50' style={styles.findRideButton} title="Find Ride!" />
+        <Button backgroundColor='#FFF'
+        color='#676767'
+        style={styles.findRideButton}
+        title="Where are you going?"
+        raised
+        large/>
+
         <Button large
         backgroundColor='#2c3e50'
         style={styles.messagesButton}
@@ -32,6 +38,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 400,
     alignSelf: 'center',
+    width: Dimensions.get('window').width * 0.8
   },
   messagesButton: {
      position: 'absolute',
