@@ -11,10 +11,10 @@ export default class HomePage extends Component {
   render() {
     return (
       <View style={styles.pageContainer}>
-        <BackgroundMap /> 
-        <Button style={styles.findRideButton} title="Find Ride!" />
-        <Button style={styles.messagesButton} title="Messages" />     
-      </View> 
+        <BackgroundMap />
+        <Button backgroundColor='#2c3e50' style={styles.findRideButton} title="Find Ride!" />
+        <Button backgroundColor='#2c3e50' style={styles.messagesButton} title="Messages" />
+      </View>
     );
   }
 }
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   messagesButton: {
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   }
 })

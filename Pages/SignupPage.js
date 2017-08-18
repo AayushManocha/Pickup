@@ -39,28 +39,28 @@ export default class SignupPage extends Component {
       <View>
         <ModalHeader navigation={this.props.navigation} title="Create Account" />
         <View style={styles.container}>
-          <FormInput 
-          text={this.state.email} 
-          onChangeText={(email) => this.setState({email})} 
-          style={{marginTop: 30}} 
+          <FormInput
+          text={this.state.email}
+          onChangeText={(email) => this.setState({email})}
+          style={{marginTop: 30}}
           keyboardType='email-address'
           autoCapitalize="none"
           spellCheck={false}
           placeholder="E-mail Address" />
 
-          <FormInput 
-          text={this.state.password} 
-          onChangeText={(password) => this.setState({password})} 
-          style={{marginTop: 30}} 
+          <FormInput
+          text={this.state.password}
+          onChangeText={(password) => this.setState({password})}
+          style={{marginTop: 30}}
           spellCheck={false}
           autoCapitalize="none"
           secureTextEntry
           placeholder="Password" />
 
-          <FormInput 
-          text={this.state.passwordConfirm} 
-          onChangeText={(passwordConfirm) => this.setState({passwordConfirm})} 
-          style={{marginTop: 30}} 
+          <FormInput
+          text={this.state.passwordConfirm}
+          onChangeText={(passwordConfirm) => this.setState({passwordConfirm})}
+          style={{marginTop: 30}}
           spellCheck={false}
           autoCapitalize="none"
           secureTextEntry
@@ -68,10 +68,10 @@ export default class SignupPage extends Component {
 
           <Text>{this.state.errorMessage}</Text>
 
-          <Button 
-          backgroundColor="#000"
+          <Button
+          backgroundColor="#2c3e50"
           onPress={this.signup}
-          style={{ marginTop: 30}} 
+          style={{ marginTop: 30}}
           title="Create Account" />
           <KeyboardSpacer />
         </View>
@@ -83,7 +83,7 @@ export default class SignupPage extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 60
-  }, 
+  },
   image: {
     flex: 0,
     width: 100,
