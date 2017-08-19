@@ -10,11 +10,18 @@ export default class MapsAutocomplete extends Component {
     this.state = {
       results: [],
     }
+  }
+
+  componentWillReceiveProps() {
+    console.log("Getting new props");
+    this.setState({
+      results: [],
+    })
     this.getPredictions();
   }
 
   getPredictions() {
-    var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=648%20Caldwell&types=geocode&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
+    var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${this.props.input}&types=geocode&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
     fetch(requestString)
     .then((results) => results.json())
     .then((results) => {
@@ -37,10 +44,14 @@ export default class MapsAutocomplete extends Component {
   }
 
   render() {
-    return (
-      <List containerStyle={{marginBottom: 20}}>
-        {this.renderResults()}
-      </List>
-    );
+    if(this.state.results != []) {
+      return (
+        <List containerStyle={{marginBottom: 20}}>
+          {this.renderResults()}
+        </List>
+      );
+    } else {
+      return null;
+    }  
   }
 }

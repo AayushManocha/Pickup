@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { FormInput } from 'react-native-elements';
 import StackHeader from '../Components/Headers/StackHeader';
 import MapsAutocomplete from '../Components/MapsAutocomplete';
 
 export default class FindRidePage extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            startingPoint: "",
+            destinationPoint:"",
+            startingIsActive: true,
+        }
     }
 
     static navigationOptions = {
@@ -17,7 +23,10 @@ export default class FindRidePage extends Component {
             <View>
                 <StackHeader navigation={this.props.navigation} title="Find a Pickup" />
                 <View style={styles.container}>
-                    <MapsAutocomplete />
+                    <FormInput 
+                    onChangeText={(startingPoint) => this.setState({startingPoint})}/>
+                    
+                    <MapsAutocomplete input={this.state.startingPoint}/>
                 </View>
             </View>
         );
