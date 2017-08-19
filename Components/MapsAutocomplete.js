@@ -12,15 +12,12 @@ export default class MapsAutocomplete extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) { 
-    console.log("Getting new props");
-    console.log(nextProps.input);    
+  componentWillReceiveProps(nextProps) {  
     this.setState({results: [],})
     this.getPredictions(nextProps.input);
   }
 
-  getPredictions(input) {
-    // console.log(this.props.input);    
+  getPredictions(input) {  
     var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=geocode&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
     fetch(requestString)
     .then((results) => results.json())
