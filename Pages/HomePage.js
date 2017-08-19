@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { TouchableOpacity, View, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
 import BackgroundMap from '../Components/BackgroundMap';
 import { MapView } from 'expo';
@@ -11,10 +11,21 @@ export default class HomePage extends Component {
   render() {
     return (
       <View style={styles.pageContainer}>
-        <BackgroundMap /> 
-        <Button style={styles.findRideButton} title="Find Ride!" />
-        <Button style={styles.messagesButton} title="Messages" />     
-      </View> 
+        <BackgroundMap />
+        <Button backgroundColor='#FFF'
+        color='#676767'
+        style={styles.findRideButton}
+        title="Where are you going?"
+        raised
+        large/>
+
+        <Button large
+        backgroundColor='#2c3e50'
+        style={styles.messagesButton}
+        title="Messages"
+        iconRight
+        icon={{name: 'arrow-upward'}}/>
+      </View>
     );
   }
 }
@@ -22,15 +33,17 @@ export default class HomePage extends Component {
 const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    flexDirection: 'column'
   },
   findRideButton: {
     position: 'absolute',
     bottom: 400,
-    flexDirection: 'row',
     alignSelf: 'center',
+    width: Dimensions.get('window').width * 0.8
   },
   messagesButton: {
-    alignSelf: 'stretch'
+     position: 'absolute',
+     alignSelf: 'center',
+     bottom: 0,
+     width: Dimensions.get('window').width,
   }
 })

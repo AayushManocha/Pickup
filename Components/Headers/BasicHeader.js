@@ -10,8 +10,8 @@ export default class BasicHeader extends Component {
         return(
             <Header
             statusBarProps={{ backgroundColor: "black", barStyle: 'light-content' }}
-            centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize: 18 } }}
-            backgroundColor="#000"
+            centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize: 18, fontWeight: '600' } }}
+            backgroundColor="#2c3e50"
             />
         );
     }

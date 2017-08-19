@@ -17,12 +17,12 @@ export default class BasicHeader extends Component {
             <Header
             onPress={this.closeModal}
             statusBarProps={{ backgroundColor: "black", barStyle: 'light-content' }}
-            centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize: 18 }}}
+            centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize: 18, fontWeight:'600' }}}
             rightComponent={
             <TouchableOpacity onPress={this.closeModal}>
-              <Icon color="#fff" name="close" /> 
-            </TouchableOpacity>}         
-            backgroundColor="#000"
+              <Icon color="#fff" name="close" />
+            </TouchableOpacity>}
+            backgroundColor="#2c3e50"
             />
         );
     }
