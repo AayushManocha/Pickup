@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import StackHeader from '../Components/Headers/StackHeader';
-import MapsAutocomplete from '../Components/MapsAutocomplete';
 
 export default class FindRidePage extends Component {
     constructor(props) {
@@ -17,7 +16,7 @@ export default class FindRidePage extends Component {
             <View>
                 <StackHeader navigation={this.props.navigation} title="Find a Pickup" />
                 <View style={styles.container}>
-                    <MapsAutocomplete />
+                    <Text>Body</Text>
                 </View>
             </View>
         );
