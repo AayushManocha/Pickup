@@ -12,16 +12,16 @@ export default class MapsAutocomplete extends Component {
     }
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) { 
     console.log("Getting new props");
-    this.setState({
-      results: [],
-    })
-    this.getPredictions();
+    console.log(nextProps.input);    
+    this.setState({results: [],})
+    this.getPredictions(nextProps.input);
   }
 
-  getPredictions() {
-    var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${this.props.input}&types=geocode&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
+  getPredictions(input) {
+    // console.log(this.props.input);    
+    var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=geocode&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
     fetch(requestString)
     .then((results) => results.json())
     .then((results) => {

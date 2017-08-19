@@ -18,15 +18,30 @@ export default class FindRidePage extends Component {
       header: null
     }
 
+    renderAutocomplete() {
+        if(this.state.startingIsActive) {
+            return <MapsAutocomplete input={this.state.startingPoint}/>
+        } else {
+            return <MapsAutocomplete input={this.state.destinationPoint}/>
+        }
+    }
+
     render() {
         return (
             <View>
                 <StackHeader navigation={this.props.navigation} title="Find a Pickup" />
                 <View style={styles.container}>
                     <FormInput 
+                    placeholder="Starting Point"
+                    onFocus={() => this.state.startingIsActive = true}
                     onChangeText={(startingPoint) => this.setState({startingPoint})}/>
+
+                    <FormInput 
+                    placeholder="Destination"
+                    onFocus={() => this.state.startingIsActive = false}
+                    onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
                     
-                    <MapsAutocomplete input={this.state.startingPoint}/>
+                    {this.renderAutocomplete()}
                 </View>
             </View>
         );
