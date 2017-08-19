@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { View, ScrollView, Text, Platform } from 'react-native';
-import { Location, Permissions } from 'expo';
+import { List, ListItem } from 'react-native-elements';
 
 export default class MapsAutocomplete extends Component {
   constructor(props) {
     super(props);
     this.getPredictions = this.getPredictions.bind(this);
+    this.renderResults = this.renderResults.bind(this);
     this.state = {
       results: [],
     }
@@ -22,15 +23,24 @@ export default class MapsAutocomplete extends Component {
           results: prevState.results.push(results.predictions[i].description);
         })
       }
-      console.log(this.state.results);
+      this.forceUpdate();
     });
+  }
+
+  renderResults() {
+    return this.state.results.map((result, index) => (
+      <ListItem
+        key={index}
+        title={result}
+      />
+    ))
   }
 
   render() {
     return (
-      <View>
-        <Text> Maps Autocomplete </Text>
-      </View>
+      <List containerStyle={{marginBottom: 20}}>
+        {this.renderResults()}
+      </List>
     );
   }
 }
