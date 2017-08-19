@@ -41,7 +41,7 @@ export default class MapsAutocomplete extends Component {
   }
 
   render() {
-    if(this.state.results != []) {
+    if(this.state.results.length != 0) {
       return (
         <List containerStyle={{marginBottom: 20}}>
           {this.renderResults()}
