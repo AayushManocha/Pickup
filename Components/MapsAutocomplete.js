@@ -43,9 +43,11 @@ export default class MapsAutocomplete extends Component {
   render() {
     if(this.state.results.length != 0) {
       return (
-        <List containerStyle={{marginBottom: 20}}>
-          {this.renderResults()}
-        </List>
+        <ScrollView overScrollMode="always">
+          <List containerStyle={{marginBottom: 20}}>
+            {this.renderResults()}
+          </List>
+        </ScrollView>
       );
     } else {
       return null;
