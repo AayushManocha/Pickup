@@ -6,6 +6,11 @@ export default class MessageListPage extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    header: null,
+    title: "Messages"
+  }
+
   render() {
     return (
       <View>

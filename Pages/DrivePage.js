@@ -6,6 +6,11 @@ export default class DrivePage extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    header: null,
+    title: "Drive"
+  }
+
   render() {
     return (
       <View>

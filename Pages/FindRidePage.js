@@ -15,7 +15,8 @@ export default class FindRidePage extends Component {
     }
 
     static navigationOptions = {
-      header: null
+      header: null,
+      title: 'Find a Ride'
     }
 
     renderAutocomplete() {

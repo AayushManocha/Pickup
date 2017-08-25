@@ -6,6 +6,11 @@ export default class ProfilePage extends Component {
     super(props);
   }
 
+  static navigationOptions = {
+    header: null,
+    title: "Profile"
+  }
+
   render() {
     return (
       <View>
