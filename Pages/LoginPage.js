@@ -36,7 +36,7 @@ export default class LoginPage extends Component {
       }
     });
   }
-  
+
   static navigationOptions = {
     header: null
   }
@@ -46,34 +46,34 @@ export default class LoginPage extends Component {
       <View>
         <BasicHeader title="Login" />
         <View style={styles.container}>
-          <FormInput text={this.state.email} 
-          onChangeText={(email) => this.setState({email})} 
-          style={{marginTop: 30}} 
+          <FormInput text={this.state.email}
+          onChangeText={(email) => this.setState({email})}
+          style={{marginTop: 30}}
           keyboardType='email-address'
           spellCheck={false}
           autoCapitalize="none"
           spellCheck={false}
           placeholder="E-mail Address" />
 
-          <FormInput text={this.state.password} 
-          onChangeText={(password) => this.setState({password})} 
-          style={{marginTop: 30}} 
+          <FormInput text={this.state.password}
+          onChangeText={(password) => this.setState({password})}
+          style={{marginTop: 30}}
           autoCapitalize="none"
           secureTextEntry
           placeholder="Password" />
 
           <Text>{this.state.errorMessage}</Text>
 
-          <Button 
-          backgroundColor="#000"
+          <Button
+          backgroundColor="#2c3e50"
           onPress={this.login}
-          style={{ marginTop: 30}} 
+          style={{ marginTop: 30}}
           title="Login" />
 
           <Button
-          backgroundColor="#000"
+          backgroundColor="#2c3e50"
           onPress={() => this.props.navigation.navigate("SignupPage")}
-          style={{ marginTop: 30}} 
+          style={{ marginTop: 30}}
           title="Create Account" />
 
           <KeyboardSpacer />
@@ -86,7 +86,7 @@ export default class LoginPage extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 60,
-  }, 
+  },
   image: {
     flex: 0,
     width: 100,
