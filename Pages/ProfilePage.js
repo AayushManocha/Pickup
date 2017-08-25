@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { Icon } from 'react-native-elements'
 
 export default class ProfilePage extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class ProfilePage extends Component {
 
   static navigationOptions = {
     header: null,
-    title: "Profile"
+    title: "Profile",
+    tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="account"/>)
   }
 
   render() {

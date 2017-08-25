@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import { FormInput } from 'react-native-elements';
+import { FormInput, Icon } from 'react-native-elements';
 import StackHeader from '../Components/Headers/StackHeader';
 import MapsAutocomplete from '../Components/MapsAutocomplete';
 
@@ -16,7 +16,8 @@ export default class FindRidePage extends Component {
 
     static navigationOptions = {
       header: null,
-      title: 'Find a Ride'
+      title: 'Find a Ride',
+      tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="car"/>)
     }
 
     renderAutocomplete() {

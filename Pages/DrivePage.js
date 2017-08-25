@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { Icon } from 'react-native-elements'
 
 export default class DrivePage extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class DrivePage extends Component {
 
   static navigationOptions = {
     header: null,
-    title: "Drive"
+    title: "Drive",
+    tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="steering"/>)
   }
 
   render() {
