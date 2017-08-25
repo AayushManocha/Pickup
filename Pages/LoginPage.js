@@ -65,13 +65,13 @@ export default class LoginPage extends Component {
           <Text>{this.state.errorMessage}</Text>
 
           <Button
-          backgroundColor="#2c3e50"
+          backgroundColor="#000"
           onPress={this.login}
           style={{ marginTop: 30}}
           title="Login" />
 
           <Button
-          backgroundColor="#2c3e50"
+          backgroundColor="#000"
           onPress={() => this.props.navigation.navigate("SignupPage")}
           style={{ marginTop: 30}}
           title="Create Account" />
