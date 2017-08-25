@@ -5,14 +5,21 @@ import BackgroundMap from '../Components/BackgroundMap';
 import { MapView } from 'expo';
 
 export default class HomePage extends Component {
+    constructor(props) {
+        super(props);
+        this.findRidesPressed = this.findRidesPressed.bind(this);
+    }
+
   static navigationOptions = {
     header: null
   }
+
   render() {
     return (
       <View style={styles.pageContainer}>
         <BackgroundMap />
         <Button backgroundColor='#FFF'
+        onPress={this.findRidesPressed}
         color='#676767'
         style={styles.findRideButton}
         title="Where are you going?"
@@ -27,6 +34,10 @@ export default class HomePage extends Component {
         icon={{name: 'arrow-upward'}}/>
       </View>
     );
+  }
+
+  findRidesPressed() {
+      this.props.navigation.navigate("FindRidePage");
   }
 }
 
