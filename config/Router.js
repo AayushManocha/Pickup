@@ -13,7 +13,13 @@ const App = TabNavigator({
   MessagesPage: {screen: MessageListPage},
   ProfilePage: {screen: ProfilePage},
 }, {
-  
+  tabBarOptions: {
+    style: {
+      backgroundColor: "#000"
+    },
+    activeTintColor: "#FFF",
+    inactiveTintColor:"#8d8d8d"
+  }
 })
 
 export const Root = StackNavigator({
