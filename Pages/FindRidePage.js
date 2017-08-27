@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import { FormInput } from 'react-native-elements';
+import { FormInput, Icon } from 'react-native-elements';
 import StackHeader from '../Components/Headers/StackHeader';
 import MapsAutocomplete from '../Components/MapsAutocomplete';
 
@@ -15,7 +15,9 @@ export default class FindRidePage extends Component {
     }
 
     static navigationOptions = {
-      header: null
+      header: null,
+      title: 'Find a Ride',
+      tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="car"/>)
     }
 
     renderAutocomplete() {
@@ -28,23 +30,20 @@ export default class FindRidePage extends Component {
 
     render() {
         return (
-            <View>
-                <StackHeader navigation={this.props.navigation} title="Find a Pickup" />
-                <View style={styles.container}>
-                    <TextInput 
-                    placeholder="Starting Point"
-                    style={styles.forms}
-                    onFocus={() => this.state.startingIsActive = true}
-                    onChangeText={(startingPoint) => this.setState({startingPoint})}/>
+            <View style={styles.container}>
+                <TextInput 
+                placeholder="Starting Point"
+                style={styles.forms}
+                onFocus={() => this.state.startingIsActive = true}
+                onChangeText={(startingPoint) => this.setState({startingPoint})}/>
 
-                    <TextInput 
-                    placeholder="Destination"
-                    style={styles.forms}
-                    onFocus={() => this.state.startingIsActive = false}
-                    onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
-                    
-                    {this.renderAutocomplete()}
-                </View>
+                <TextInput 
+                placeholder="Destination"
+                style={styles.forms}
+                onFocus={() => this.state.startingIsActive = false}
+                onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
+                
+                {this.renderAutocomplete()}
             </View>
         );
     }
