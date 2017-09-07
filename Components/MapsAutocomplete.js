@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, ScrollView, Text, Platform } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
+//import statements
 
 export default class MapsAutocomplete extends Component {
   constructor(props) {
@@ -12,12 +13,12 @@ export default class MapsAutocomplete extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {  
+  componentWillReceiveProps(nextProps) {
     this.setState({results: [],})
     this.getPredictions(nextProps.input);
   }
 
-  getPredictions(input) {  
+  getPredictions(input) {
     var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=geocode&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
     fetch(requestString)
     .then((results) => results.json())
@@ -51,6 +52,6 @@ export default class MapsAutocomplete extends Component {
       );
     } else {
       return null;
-    }  
+    }
   }
 }
