@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'; 
 import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
 import BackgroundMap from '../Components/BackgroundMap';
