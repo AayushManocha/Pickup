@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; //Importing relevant libraries
 import { Image, View, StyleSheet, Keyboard, Dimensions, Text } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 import ModalHeader from '../Components/Headers/ModalHeader'
@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 export default class SignupPage extends Component {
-  constructor(props) {
+  constructor(props) { //Constructor to initialize state used for creating user details
     super(props);
     this.state = {
       email: "",
@@ -17,16 +17,16 @@ export default class SignupPage extends Component {
     this.signup = this.signup.bind(this);
   }
 
-  async signup() {
+  async signup() { //Password and user authentication
     Keyboard.dismiss();
-    if(this.state.password === this.state.passwordConfirm) {
+    if(this.state.password === this.state.passwordConfirm) { //If statement checking for user authentication
       try {
-        await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+        await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password); //Verifying user email and password with firebase
       } catch (error) {
         this.setState({errorMessage: error.toString()});
       }
     } else {
-      this.setState({errorMessage: "Passwords don't match"});
+      this.setState({errorMessage: "Passwords don't match"}); //if passwords don't match, returns error message
     }
   }
 
@@ -35,9 +35,9 @@ export default class SignupPage extends Component {
   }
 
   render() {
-    return (
+    return ( //Account creation elements
       <View>
-        <ModalHeader navigation={this.props.navigation} title="Create Account" />
+        <ModalHeader navigation={this.props.navigation} title="Create Account" /> //Email input form
         <View style={styles.container}>
           <FormInput
           text={this.state.email}
@@ -48,8 +48,8 @@ export default class SignupPage extends Component {
           spellCheck={false}
           placeholder="E-mail Address" />
 
-          <FormInput
-          text={this.state.password}
+          <FormInput //
+          text={this.state.password} //Password input form
           onChangeText={(password) => this.setState({password})}
           style={{marginTop: 30}}
           spellCheck={false}
@@ -58,7 +58,7 @@ export default class SignupPage extends Component {
           placeholder="Password" />
 
           <FormInput
-          text={this.state.passwordConfirm}
+          text={this.state.passwordConfirm} //Password verification
           onChangeText={(passwordConfirm) => this.setState({passwordConfirm})}
           style={{marginTop: 30}}
           spellCheck={false}
@@ -72,7 +72,7 @@ export default class SignupPage extends Component {
           backgroundColor="#000"
           onPress={this.signup}
           style={{ marginTop: 30}}
-          title="Create Account" />
+          title="Create Account" /> //Confirmation button for users to create account and submit forms
           <KeyboardSpacer />
         </View>
       </View>

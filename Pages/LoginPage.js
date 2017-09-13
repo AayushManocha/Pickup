@@ -6,7 +6,7 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import * as firebase from 'firebase';
 
 export default class LoginPage extends Component {
-  constructor(props) {
+  constructor(props) { //Initializing state for user email and password entry
     super(props);
     this.state = {
       email: "",
@@ -19,7 +19,7 @@ export default class LoginPage extends Component {
     this.checkAuthStatus();
   }
 
-  async login() {
+  async login() { //Loging user in to app by authenticating email and password through firebase
     try {
       await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
       console.log("Logged In!");
@@ -41,12 +41,12 @@ export default class LoginPage extends Component {
     header: null
   }
 
-  render() {
+  render() { //Page elements for text inputs and relavant buttons
     return(
       <View>
         <BasicHeader title="Login" />
         <View style={styles.container}>
-          <FormInput text={this.state.email}
+          <FormInput text={this.state.email} //Email entry form
           onChangeText={(email) => this.setState({email})}
           style={{marginTop: 30}}
           keyboardType='email-address'
@@ -55,7 +55,7 @@ export default class LoginPage extends Component {
           spellCheck={false}
           placeholder="E-mail Address" />
 
-          <FormInput text={this.state.password}
+          <FormInput text={this.state.password} //Password entry form
           onChangeText={(password) => this.setState({password})}
           style={{marginTop: 30}}
           autoCapitalize="none"
@@ -68,13 +68,13 @@ export default class LoginPage extends Component {
           backgroundColor="#000"
           onPress={this.login}
           style={{ marginTop: 30}}
-          title="Login" />
+          title="Login" /> //Button allowing existing users to log in to app
 
           <Button
           backgroundColor="#000"
           onPress={() => this.props.navigation.navigate("SignupPage")}
           style={{ marginTop: 30}}
-          title="Create Account" />
+          title="Create Account" />//Button linking to Signup Page for new users to create an account
 
           <KeyboardSpacer />
         </View>
