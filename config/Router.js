@@ -6,8 +6,10 @@ import FindRidePage from '../Pages/FindRidePage';
 import ProfilePage from '../Pages/ProfilePage';
 import MessageListPage from '../Pages/MessageListPage';
 import DrivePage from '../Pages/DrivePage';
+//import all pages and react nav stuff
 
 const App = TabNavigator({
+  //pages for the actual app's tab nav
   FindRidePage: {screen: FindRidePage},
   DrivePage: {screen: DrivePage},
   MessagesPage: {screen: MessageListPage},
@@ -16,13 +18,17 @@ const App = TabNavigator({
   tabBarOptions: {
     style: {
       backgroundColor: "#000"
+      //black tab bar
     },
     activeTintColor: "#FFF",
+    //selected tab text colour
     inactiveTintColor:"#8d8d8d"
+    //unselected tab text colour
   }
 })
 
 export const Root = StackNavigator({
+  //pages for initial stack navigation set
   LoginPage: {screen: LoginPage},
   SignupPage: {screen: SignupPage},
   HomePage:  {screen: App},
