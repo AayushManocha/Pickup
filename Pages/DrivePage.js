@@ -13,7 +13,7 @@ export default class DrivePage extends Component { // Export class for use in ot
     tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="steering"/>)
   }
 
-  render() {
+  render() { //Returns page element
     return (
       <View>
         <Text>Drive Page</Text>

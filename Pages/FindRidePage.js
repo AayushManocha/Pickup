@@ -1,11 +1,11 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react'; //Implementing relevant libraries
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { FormInput, Icon } from 'react-native-elements';
 import StackHeader from '../Components/Headers/StackHeader';
 import MapsAutocomplete from '../Components/MapsAutocomplete';
 
 export default class FindRidePage extends Component {
-    constructor(props) {
+    constructor(props) { //Constructor to initialize state used to input start and end destination points
         super(props);
         this.state = {
             startingPoint: "",
@@ -14,13 +14,13 @@ export default class FindRidePage extends Component {
         }
     }
 
-    static navigationOptions = { 
+    static navigationOptions = { //Configuration for find a ride navigarion tool
       header: null,
       title: 'Find a Ride',
       tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="car"/>)
     }
 
-    renderAutocomplete() {
+    renderAutocomplete() { //Autocomplete functionality for when searching input start and destination points
         if(this.state.startingIsActive) {
             return <MapsAutocomplete input={this.state.startingPoint}/>
         } else {
