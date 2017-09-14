@@ -1,3 +1,4 @@
+//import all pages and react nav stuff
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import SignupPage from '../Pages/SignupPage';
 import LoginPage from '../Pages/LoginPage';
@@ -6,7 +7,7 @@ import FindRidePage from '../Pages/FindRidePage';
 import ProfilePage from '../Pages/ProfilePage';
 import MessageListPage from '../Pages/MessageListPage';
 import DrivePage from '../Pages/DrivePage';
-//import all pages and react nav stuff
+
 
 const App = TabNavigator({
   //pages for the actual app's tab nav
