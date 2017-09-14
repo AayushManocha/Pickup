@@ -1,12 +1,16 @@
-import React, {Component} from 'react'; //Importing relevant libraries
+//Importing relevant libraries
+//Login page for users, consisting of an email and password form, as well as option to create account for new users
+//Uses firebase for authentication and user validity.
+import React, {Component} from 'react'; 
 import { Image, View, StyleSheet, Keyboard, Dimensions, Text } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 import BasicHeader from '../Components/Headers/BasicHeader';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import * as firebase from 'firebase';
 
+//Initializing state for user email and password entry
 export default class LoginPage extends Component {
-  constructor(props) { //Initializing state for user email and password entry
+  constructor(props) { 
     super(props);
     this.state = {
       email: "",
@@ -19,7 +23,8 @@ export default class LoginPage extends Component {
     this.checkAuthStatus();
   }
 
-  async login() { //Loging user in to app by authenticating email and password through firebase
+//Loging user in to app by authenticating email and password through firebase
+  async login() { 
     try {
       await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
       console.log("Logged In!");
@@ -29,7 +34,8 @@ export default class LoginPage extends Component {
     }
   }
 
-  checkAuthStatus() { //Brings user to home page once authentication has been validated
+//Brings user to home page once authentication has been validated
+  checkAuthStatus() { 
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
         this.props.navigation.navigate("HomePage");
@@ -41,12 +47,13 @@ export default class LoginPage extends Component {
     header: null
   }
 
-  render() { //Page elements for text inputs and relavant buttons
+//Page elements for text inputs and relavant buttons
+  render() { 
     return(
       <View>
         <BasicHeader title="Login" />
         <View style={styles.container}>
-          <FormInput text={this.state.email} //Email entry form
+          <FormInput text={this.state.email}
           onChangeText={(email) => this.setState({email})}
           style={{marginTop: 30}}
           keyboardType='email-address'
@@ -55,7 +62,7 @@ export default class LoginPage extends Component {
           spellCheck={false}
           placeholder="E-mail Address" />
 
-          <FormInput text={this.state.password} //Password entry form
+          <FormInput text={this.state.password}
           onChangeText={(password) => this.setState({password})}
           style={{marginTop: 30}}
           autoCapitalize="none"
@@ -68,13 +75,13 @@ export default class LoginPage extends Component {
           backgroundColor="#000"
           onPress={this.login}
           style={{ marginTop: 30}}
-          title="Login" /> //Button allowing existing users to log in to app
+          title="Login" />
 
           <Button
           backgroundColor="#000"
           onPress={() => this.props.navigation.navigate("SignupPage")}
           style={{ marginTop: 30}}
-          title="Create Account" />//Button linking to Signup Page for new users to create an account
+          title="Create Account" />
 
           <KeyboardSpacer />
         </View>
@@ -83,6 +90,7 @@ export default class LoginPage extends Component {
   }
 }
 
+//JSX stylesheet for page
 const styles = StyleSheet.create({
   container: {
     marginTop: 60,
