@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+//Importing relevant libraries
+//This page provides a list of messages received by the logged in user.
+import React, { Component } from 'react'; 
 import { View, Text } from 'react-native';
 import { Icon } from 'react-native-elements'
 
@@ -7,6 +9,7 @@ export default class MessageListPage extends Component {
     super(props);
   }
 
+//Messages screen navigation settings
   static navigationOptions = {
     header: null,
     title: "Messages",

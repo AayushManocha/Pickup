@@ -1,4 +1,7 @@
-import React, {Component} from 'react';
+//Importing relevant libraries
+//Home page where users arrive after logging in. Provides users with a map and buttons to direct them to finding a
+//ride and their messages.
+import React, {Component} from 'react'; 
 import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
 import BackgroundMap from '../Components/BackgroundMap';
@@ -14,7 +17,8 @@ export default class HomePage extends Component {
     header: null
   }
 
-  render() {
+//Returns page element for home page containing background maps and messages
+  render() { 
     return (
       <View style={styles.pageContainer}>
         <BackgroundMap />

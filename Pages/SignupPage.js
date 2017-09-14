@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
+//Importing relevant libraries
+//Signup page for new users. Users are provided with a form to enter new account details consisting of an
+//email and password, utilizing firebase for user and password authentication.
+import React, { Component } from 'react'; 
 import { Image, View, StyleSheet, Keyboard, Dimensions, Text } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 import ModalHeader from '../Components/Headers/ModalHeader'
 import * as firebase from 'firebase';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 
+//Constructor to initialize state used for creating user details
 export default class SignupPage extends Component {
   constructor(props) {
     super(props);
@@ -17,14 +21,18 @@ export default class SignupPage extends Component {
     this.signup = this.signup.bind(this);
   }
 
+//Password and user authentication
   async signup() {
     Keyboard.dismiss();
-    if(this.state.password === this.state.passwordConfirm) {
+    //If statement checking for user authentication
+    if(this.state.password === this.state.passwordConfirm) { 
       try {
-        await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+        //Verifying user email and password with firebase
+        await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password); 
       } catch (error) {
         this.setState({errorMessage: error.toString()});
       }
+      //If passwords don't match, returns error message
     } else {
       this.setState({errorMessage: "Passwords don't match"});
     }
@@ -34,8 +42,9 @@ export default class SignupPage extends Component {
     header: null
   }
 
+//Account creation elements
   render() {
-    return (
+    return ( 
       <View>
         <ModalHeader navigation={this.props.navigation} title="Create Account" />
         <View style={styles.container}>
@@ -80,6 +89,7 @@ export default class SignupPage extends Component {
   }
 }
 
+//JSX stylesheet for page
 const styles = StyleSheet.create({
   container: {
     marginTop: 60
