@@ -29,7 +29,7 @@ export default class LoginPage extends Component {
     }
   }
 
-  checkAuthStatus() {
+  checkAuthStatus() { //Brings user to home page once authentication has been validated
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
         this.props.navigation.navigate("HomePage");

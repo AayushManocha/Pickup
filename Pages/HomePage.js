@@ -1,4 +1,4 @@
-import React, {Component} from 'react'; 
+import React, {Component} from 'react'; //Importing relevant libraries
 import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
 import BackgroundMap from '../Components/BackgroundMap';
@@ -14,7 +14,7 @@ export default class HomePage extends Component {
     header: null
   }
 
-  render() {
+  render() { //Returns page element for home page containing background maps and messages
     return (
       <View style={styles.pageContainer}>
         <BackgroundMap />

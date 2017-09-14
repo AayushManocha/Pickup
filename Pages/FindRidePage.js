@@ -28,10 +28,10 @@ export default class FindRidePage extends Component {
         }
     }
 
-    render() {
+    render() { //Returns page element containing start and destination entries
         return (
             <View style={styles.container}>
-                <TextInput 
+                <TextInput //Input for starting point
                 placeholder="Starting Point"
                 style={styles.forms}
                 onFocus={() => this.state.startingIsActive = true}
@@ -41,7 +41,7 @@ export default class FindRidePage extends Component {
                 placeholder="Destination"
                 style={styles.forms}
                 onFocus={() => this.state.startingIsActive = false}
-                onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
+                onChangeText={(destinationPoint) => this.setState({destinationPoint})}/> //Input for destination point
                 
                 {this.renderAutocomplete()}
             </View>
