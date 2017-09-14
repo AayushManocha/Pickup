@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+//Implementing relevant libraries
+//Find a ride page. This page allows users to find a ride and connect with drivers by inputing their starting point
+//and destination, with autocomplete input functionality.
+import React, { Component } from 'react'; 
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { FormInput, Icon } from 'react-native-elements';
 import StackHeader from '../Components/Headers/StackHeader';
 import MapsAutocomplete from '../Components/MapsAutocomplete';
 
+//Constructor to initialize state used to input start and end destination points
 export default class FindRidePage extends Component {
-    constructor(props) {
+    constructor(props) { 
         super(props);
         this.state = {
             startingPoint: "",
@@ -14,12 +18,14 @@ export default class FindRidePage extends Component {
         }
     }
 
+//Configuration for find a ride navigarion tool
     static navigationOptions = {
       header: null,
       title: 'Find a Ride',
       tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="car"/>)
     }
 
+//Autocomplete functionality for when searching input start and destination points
     renderAutocomplete() {
         if(this.state.startingIsActive) {
             return <MapsAutocomplete input={this.state.startingPoint}/>
@@ -28,10 +34,11 @@ export default class FindRidePage extends Component {
         }
     }
 
+//Returns page element containing start and destination entries
     render() {
         return (
             <View style={styles.container}>
-                <TextInput 
+                <TextInput
                 placeholder="Starting Point"
                 style={styles.forms}
                 onFocus={() => this.state.startingIsActive = true}
@@ -41,7 +48,7 @@ export default class FindRidePage extends Component {
                 placeholder="Destination"
                 style={styles.forms}
                 onFocus={() => this.state.startingIsActive = false}
-                onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
+                onChangeText={(destinationPoint) => this.setState({destinationPoint})}/> 
                 
                 {this.renderAutocomplete()}
             </View>
