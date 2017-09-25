@@ -26,7 +26,7 @@ export default class MapsAutocomplete extends Component {
   //getPredictions(input,location) {
   // ^^ new function name to pass in location
     //temp location of McMaster
-    var location = 43.2605739,-79.9304626
+    var location = "43.2605739,-79.9304626"
     //API request to google maps with search, location, radius, and language
     var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&location=${location}&radius=500&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
     fetch(requestString)
