@@ -1,7 +1,8 @@
 //import react and expo dependencies
 import React, { Component } from 'react'
-import { View, ScrollView, Text, Platform } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, Platform } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
+import { MapView, Location, Permissions } from 'expo';
 
 export default class MapsAutocomplete extends Component {
   constructor(props) {
@@ -13,8 +14,40 @@ export default class MapsAutocomplete extends Component {
     //set state to result
     this.state = {
       results: [],
+      location: null,
     }
   }
+
+  componentWillMount() {
+    //function to check if running in an emulator get location
+    if (Platform.OS === 'android' && !Constants.isDevice) {
+      //show error message
+      this.setState({
+        errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
+      });
+    } else {
+      //else run _getLocationAsync
+      this._getLocationAsync();
+    }
+  }
+
+
+
+  _getLocationAsync = async () => {
+    //check location permissions are enabled
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      //if not enabled show error message
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    //set location
+    this.setState({ location });
+  };
+
 
   componentWillReceiveProps(nextProps) {
     //pass props to setState() and getPredictions()
@@ -22,24 +55,36 @@ export default class MapsAutocomplete extends Component {
     this.getPredictions(nextProps.input);
   }
 
+
   getPredictions(input) {
-  //getPredictions(input,location) {
-  // ^^ new function name to pass in location
-    //temp location of McMaster
-    var location = "43.2605739,-79.9304626"
-    //API request to google maps with search, location, radius, and language
-    var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&location=${location}&radius=500&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
-    fetch(requestString)
-    .then((results) => results.json())
-    .then((results) => {
-      //calculate length of predictions
-      for(var i = 0; i < results.predictions.length; i++) {
-        this.setState((prevState) => {
-          results: prevState.results.push(results.predictions[i].description);
-        })
-      }
-      this.forceUpdate();
-    });
+    if(typeof this.state.location === 'object' && this.state.location) {
+      var longitude = this.state.location.coords.longitude
+      var latitude = this.state.location.coords.latitude
+      console.log(longitude,latitude);
+      var long = longitude.toString();
+      var lat = latitude.toString();
+      var location = long.concat(',',long);
+      //API request to google maps with search, location, radius, and language
+      var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&location=${location}&radius=500&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
+      fetch(requestString)
+      .then((results) => results.json())
+      .then((results) => {
+        //calculate length of predictions
+        for(var i = 0; i < results.predictions.length; i++) {
+          this.setState((prevState) => {
+            results: prevState.results.push(results.predictions[i].description);
+          })
+        }
+        this.forceUpdate();
+      });
+    }else {
+    return (
+      //loading message to display while location loads
+      <View>
+        <Text>Loading...</Text>
+      </View>
+      );
+    }
   }
 
   renderResults() {
