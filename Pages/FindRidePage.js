@@ -56,7 +56,6 @@ export default class FindRidePage extends Component {
                 style={styles.forms}
                 onFocus={() => this.state.startingIsActive = false}
                 onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
-                <Text>Hello World!!</Text>
                 {this.renderAutocomplete()}
             </View>
         );
