@@ -2,9 +2,11 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, ScrollView, Text, Platform } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
-import { MapView, Location, Permissions } from 'expo';
+import { Constants, Location, Permissions } from 'expo';
 
-export default class MapsAutocomplete extends Component {
+
+
+export default class MapsAutocomplete extends React.Component {
   constructor(props) {
     //initialize Component with properties
     super(props);
@@ -14,7 +16,7 @@ export default class MapsAutocomplete extends Component {
     //set state to result
     this.state = {
       results: [],
-      location: null,
+      location: ""
     }
   }
 
@@ -60,10 +62,12 @@ export default class MapsAutocomplete extends Component {
     if(typeof this.state.location === 'object' && this.state.location) {
       var longitude = this.state.location.coords.longitude
       var latitude = this.state.location.coords.latitude
-      console.log(longitude,latitude);
       var long = longitude.toString();
       var lat = latitude.toString();
-      var location = long.concat(',',long);
+      //location specified as lat,long
+      var location = lat.concat(',',long);
+
+
       //API request to google maps with search, location, radius, and language
       var requestString = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&location=${location}&radius=500&language=en&key=AIzaSyC55oFnJQXfvv-3t-UCeKtmuc7_a2ejgsU`;
       fetch(requestString)
