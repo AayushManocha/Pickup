@@ -48,13 +48,13 @@ export default class FindRidePage extends Component {
                 <TextInput
                 placeholder="Starting Point"
                 style={styles.forms}
-                onFocus={() => this.state.startingIsActive = true}
+                onFocus={() => this.setState({startingIsActive: true})}
                 onChangeText={(startingPoint) => this.setState({startingPoint})}/>
 
                 <TextInput
                 placeholder="Destination"
                 style={styles.forms}
-                onFocus={() => this.state.startingIsActive = false}
+                onFocus={() => this.setState({startingIsActive: false})}
                 onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
                 {this.renderAutocomplete()}
             </View>
