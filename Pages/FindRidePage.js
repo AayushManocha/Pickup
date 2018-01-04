@@ -3,7 +3,7 @@
 //and destination, with autocomplete input functionality.
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import { FormInput, Icon } from 'react-native-elements';
+import { FormInput, Icon, Button } from 'react-native-elements';
 import StackHeader from '../Components/Headers/StackHeader';
 import MapsAutocomplete from '../Components/MapsAutocomplete';
 
@@ -40,11 +40,14 @@ export default class FindRidePage extends Component {
 
 //Autocomplete functionality for when searching input start and destination points
     renderAutocomplete() {
-        if(!this.state.startingPointSet || !this.state.destinationPointSet)
-        if(this.state.startingIsActive) {
-            return <MapsAutocomplete handler={this.handler} input={this.state.startingPoint}/>
+        if(!this.state.startingPointSet || !this.state.destinationPointSet) {
+            if(this.state.startingIsActive) {
+                return <MapsAutocomplete handler={this.handler} input={this.state.startingPoint}/>
+            } else {
+                return <MapsAutocomplete handler={this.handler} input={this.state.destinationPoint}/>
+            }
         } else {
-            return <MapsAutocomplete handler={this.handler} input={this.state.destinationPoint}/>
+            return <Button title="Find Ride"/>
         }
     }
 
