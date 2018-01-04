@@ -97,6 +97,7 @@ export default class MapsAutocomplete extends React.Component {
       <ListItem
         key={index}
         title={result}
+        onPress={() => this.props.handler(result)}
       />
     ))
   }

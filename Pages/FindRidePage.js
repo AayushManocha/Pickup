@@ -11,6 +11,7 @@ import MapsAutocomplete from '../Components/MapsAutocomplete';
 export default class FindRidePage extends Component {
     constructor(props) {
         super(props);
+        this.handler = this.handler.bind(this);
         this.state = {
             startingPoint: "",
             destinationPoint:"",
@@ -26,12 +27,21 @@ export default class FindRidePage extends Component {
       tabBarIcon: ({focused, tintColor}) => (<Icon type="material-community" color={tintColor} size={25} name="car"/>)
     }
 
+//Handle Autocomplete List Clicks
+    handler(text) {
+        if(this.state.startingIsActive) {
+            this.setState({startingPoint: text});
+        } else {
+            this.setState({destinationPoint: text});
+        }
+    }
+
 //Autocomplete functionality for when searching input start and destination points
     renderAutocomplete() {
         if(this.state.startingIsActive) {
-            return <MapsAutocomplete input={this.state.startingPoint}/>
+            return <MapsAutocomplete handler={this.handler} input={this.state.startingPoint}/>
         } else {
-            return <MapsAutocomplete input={this.state.destinationPoint}/>
+            return <MapsAutocomplete handler={this.handler} input={this.state.destinationPoint}/>
         }
     }
 
@@ -48,12 +58,14 @@ export default class FindRidePage extends Component {
                 <TextInput
                 placeholder="Starting Point"
                 style={styles.forms}
+                value={this.state.startingPoint}
                 onFocus={() => this.setState({startingIsActive: true})}
                 onChangeText={(startingPoint) => this.setState({startingPoint})}/>
 
                 <TextInput
                 placeholder="Destination"
                 style={styles.forms}
+                value={this.state.destinationPoint}                
                 onFocus={() => this.setState({startingIsActive: false})}
                 onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
                 {this.renderAutocomplete()}
