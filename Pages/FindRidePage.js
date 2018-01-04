@@ -16,6 +16,8 @@ export default class FindRidePage extends Component {
             startingPoint: "",
             destinationPoint:"",
             startingIsActive: true,
+            startingPointSet: false,
+            destinationPointSet: false,
             location: null,
         }
     }
@@ -30,14 +32,15 @@ export default class FindRidePage extends Component {
 //Handle Autocomplete List Clicks
     handler(text) {
         if(this.state.startingIsActive) {
-            this.setState({startingPoint: text});
+            this.setState({startingPoint: text, startingPointSet: true});
         } else {
-            this.setState({destinationPoint: text});
+            this.setState({destinationPoint: text, destinationPointSet: true});
         }
     }
 
 //Autocomplete functionality for when searching input start and destination points
     renderAutocomplete() {
+        if(!this.state.startingPointSet || !this.state.destinationPointSet)
         if(this.state.startingIsActive) {
             return <MapsAutocomplete handler={this.handler} input={this.state.startingPoint}/>
         } else {
