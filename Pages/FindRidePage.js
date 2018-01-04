@@ -64,7 +64,7 @@ export default class FindRidePage extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 70,
+        marginTop: 10,
     },
     forms: {
         margin: 5,
