@@ -1,7 +1,7 @@
 //Implementing relevant libraries
 //Find a ride page. This page allows users to find a ride and connect with drivers by inputing their starting point
 //and destination, with autocomplete input functionality.
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { FormInput, Icon } from 'react-native-elements';
 import StackHeader from '../Components/Headers/StackHeader';
@@ -9,12 +9,13 @@ import MapsAutocomplete from '../Components/MapsAutocomplete';
 
 //Constructor to initialize state used to input start and end destination points
 export default class FindRidePage extends Component {
-    constructor(props) { 
+    constructor(props) {
         super(props);
         this.state = {
             startingPoint: "",
             destinationPoint:"",
             startingIsActive: true,
+            location: null,
         }
     }
 
@@ -36,6 +37,12 @@ export default class FindRidePage extends Component {
 
 //Returns page element containing start and destination entries
     render() {
+      let text = 'Waiting..';
+    if (this.state.errorMessage) {
+      text = this.state.errorMessage;
+    } else if (this.state.location) {
+      text = JSON.stringify(this.state.location);
+    }
         return (
             <View style={styles.container}>
                 <TextInput
@@ -44,12 +51,11 @@ export default class FindRidePage extends Component {
                 onFocus={() => this.state.startingIsActive = true}
                 onChangeText={(startingPoint) => this.setState({startingPoint})}/>
 
-                <TextInput 
+                <TextInput
                 placeholder="Destination"
                 style={styles.forms}
                 onFocus={() => this.state.startingIsActive = false}
-                onChangeText={(destinationPoint) => this.setState({destinationPoint})}/> 
-                
+                onChangeText={(destinationPoint) => this.setState({destinationPoint})}/>
                 {this.renderAutocomplete()}
             </View>
         );
